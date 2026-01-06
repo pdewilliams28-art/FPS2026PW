@@ -1,0 +1,54 @@
+[gd_scene load_steps=9 format=3 uid="uid://dgn5q6l5ovybg"]
+
+[ext_resource type="PackedScene" uid="uid://c8ctix13pyd10" path="res://player.tscn" id="1_byb4o"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_oqrd8"]
+albedo_color = Color(0.831373, 0.647059, 0.0862745, 1)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_eu7ei"]
+albedo_color = Color(0.384314, 1, 0.360784, 1)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_7arjg"]
+albedo_color = Color(1, 0.15, 0.15, 1)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_3opwb"]
+albedo_color = Color(1, 0.396078, 0.831373, 1)
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_7ro04"]
+
+[sub_resource type="Sky" id="Sky_d6ifc"]
+sky_material = SubResource("ProceduralSkyMaterial_7ro04")
+
+[sub_resource type="Environment" id="Environment_aqrqs"]
+background_mode = 2
+sky = SubResource("Sky_d6ifc")
+
+[node name="World" type="Node3D"]
+
+[node name="Platform 1" type="CSGBox3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 12.2555, 12.7028, 20.6423)
+size = Vector3(29.3741, 23.3635, 27.7108)
+material = SubResource("StandardMaterial3D_oqrd8")
+
+[node name="Platform 2" type="CSGBox3D" parent="."]
+transform = Transform3D(0.982897, 0, -0.184157, 0, 1, 0, 0.184157, 0, 0.982897, 42.0829, 16.9386, -14.1737)
+size = Vector3(55.9722, 47.3827, 12.5825)
+material = SubResource("StandardMaterial3D_eu7ei")
+
+[node name="Platform 3" type="CSGBox3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 103.557, 26.6959, -48.8128)
+size = Vector3(52.5009, 7, 15)
+material = SubResource("StandardMaterial3D_7arjg")
+
+[node name="Platform 4" type="CSGBox3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 66.0845, -22.1456, 2.78662)
+size = Vector3(54.0223, 26.5752, 16.4362)
+material = SubResource("StandardMaterial3D_3opwb")
+
+[node name="Player" parent="." instance=ExtResource("1_byb4o")]
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(0.305679, 0, 0.952135, 0, 1, 0, -0.952135, 0, 0.305679, -10.9317, 82.7787, 50.7631)
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_aqrqs")
