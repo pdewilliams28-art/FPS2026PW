@@ -1,23 +1,27 @@
-[gd_scene load_steps=3 format=3 uid="uid://c8ctix13pyd10"]
+[gd_scene load_steps=4 format=3 uid="uid://c8ctix13pyd10"]
+
+[ext_resource type="Script" path="res://player.gd" id="1_anuh1"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_2ei63"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_o74pq"]
 
 [node name="Player" type="CharacterBody3D"]
+script = ExtResource("1_anuh1")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
 shape = SubResource("CapsuleShape3D_2ei63")
 
 [node name="Camera3D" type="Camera3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+unique_name_in_owner = true
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.37247, 0)
 
 [node name="Body" type="CSGBox3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.313477, 0.776012, 0.269165)
-size = Vector3(0.419922, 1.75239, 0.46167)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0693423, 1.06113, 0)
+size = Vector3(0.463, 1.67627, 0.462)
 material = SubResource("StandardMaterial3D_o74pq")
 
 [node name="Nose" type="CSGBox3D" parent="."]
-transform = Transform3D(-0.0906236, -0.00207648, -0.995883, -0.0211139, 0.999777, -0.000163269, 0.995661, 0.0210122, -0.0906473, -0.21891, 0.938818, -0.437523)
-size = Vector3(1, 0.182909, 0.173767)
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -0.0795756, 1.20361, -0.358329)
+size = Vector3(0.684311, 0.196289, 0.160645)

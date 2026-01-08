@@ -1,0 +1,24 @@
+[gd_scene load_steps=6 format=3 uid="uid://dm5uxyh7scqvg"]
+
+[ext_resource type="Texture2D" uid="uid://cje4ii0sumnju" path="res://checkboard.png" id="1_6jwtl"]
+[ext_resource type="Texture2D" uid="uid://ia8pudvhp36n" path="res://icon.svg" id="2_j4stg"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_tu8c6"]
+albedo_texture = ExtResource("1_6jwtl")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_0hcoh"]
+albedo_texture = ExtResource("2_j4stg")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_0k2ax"]
+albedo_texture = ExtResource("2_j4stg")
+uv1_triplanar = true
+
+[node name="test" type="Node3D"]
+
+[node name="CSGBox3D" type="CSGBox3D" parent="."]
+material_override = SubResource("StandardMaterial3D_tu8c6")
+
+[node name="CSGBox3D2" type="CSGBox3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.67622, 0, 0)
+material_override = SubResource("StandardMaterial3D_0hcoh")
+material = SubResource("StandardMaterial3D_0k2ax")
