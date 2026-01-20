@@ -5,7 +5,10 @@ extends CharacterBody3D
 
 @export var gravity:float = 10.0
 @export var max_jumps:int = 0
-var jumps = 0
+var jumps = 1
+
+
+
 
 func _ready() -> void:
 	#capture the mouse
@@ -47,6 +50,7 @@ func _physics_process(delta: float) -> void:
 		velocity.y = 10.0
 		
 		jumps += 1
+		
 	elif Input.is_action_just_pressed("move_jump") and velocity.y > 0.0:
 		velocity.y = 0.0
 	

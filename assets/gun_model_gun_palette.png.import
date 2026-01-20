@@ -2,17 +2,20 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cje4ii0sumnju"
-path.s3tc="res://.godot/imported/checkboard.png-4cb8f9b1adddcfd77a23f6e46684261b.s3tc.ctex"
+uid="uid://eg8iskxwddso"
+path.s3tc="res://.godot/imported/gun_model_gun_palette.png-48788ee98fc80f988877477e04582ac6.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
 }
+generator_parameters={
+"md5": "01cdcaf22cdc60b01426617806af991d"
+}
 
 [deps]
 
-source_file="res://checkboard.png"
-dest_files=["res://.godot/imported/checkboard.png-4cb8f9b1adddcfd77a23f6e46684261b.s3tc.ctex"]
+source_file="res://assets/gun_model_gun_palette.png"
+dest_files=["res://.godot/imported/gun_model_gun_palette.png-48788ee98fc80f988877477e04582ac6.s3tc.ctex"]
 
 [params]
 

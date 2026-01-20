@@ -1,0 +1,68 @@
+[gd_scene load_steps=7 format=3 uid="uid://c8ctix13pyd10"]
+
+[ext_resource type="Script" path="res://player.gd" id="1_anuh1"]
+[ext_resource type="PackedScene" uid="uid://drplhagqeyas7" path="res://assets/gun_model.glb" id="2_hbgvo"]
+[ext_resource type="PackedScene" uid="uid://d3m5lf5f1dovn" path="res://scenes/projectile.tscn" id="3_onqur"]
+[ext_resource type="Texture2D" uid="uid://dune6upbl356u" path="res://assets/reticle.png" id="3_t2crr"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_2ei63"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_o74pq"]
+
+[node name="Player" type="CharacterBody3D"]
+script = ExtResource("1_anuh1")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+shape = SubResource("CapsuleShape3D_2ei63")
+
+[node name="Camera3D" type="Camera3D" parent="."]
+unique_name_in_owner = true
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.37247, 0)
+cull_mask = 524287
+
+[node name="WeaponPlace" type="Node3D" parent="Camera3D"]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -0.0795756, -0.16886, -0.358329)
+
+[node name="gun_model" parent="Camera3D/WeaponPlace" instance=ExtResource("2_hbgvo")]
+transform = Transform3D(0.0193247, 0, 0.499626, 0, 0.5, 0, -0.499626, 0, 0.0193247, 0.569837, 0.0880649, -0.53206)
+
+[node name="ProjectileSpawnPoint" type="Marker3D" parent="Camera3D/WeaponPlace/gun_model"]
+
+[node name="Projectile" parent="Camera3D/WeaponPlace/gun_model/ProjectileSpawnPoint" instance=ExtResource("3_onqur")]
+transform = Transform3D(-0.995999, 0, 0.0893636, 0, 1, 0, -0.0893636, 0, -0.995999, 0.0571815, 0, 1.47839)
+
+[node name="MuzzleLight" type="OmniLight3D" parent="Camera3D/WeaponPlace/gun_model"]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, -0.727972, 0)
+light_color = Color(1, 1, 0.227451, 1)
+
+[node name="Body" type="CSGBox3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0693423, 1.06113, 0)
+layers = 524288
+size = Vector3(0.463, 1.67627, 0.462)
+material = SubResource("StandardMaterial3D_o74pq")
+
+[node name="Nose" type="CSGBox3D" parent="Body"]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -0.0102333, 0.14248, -0.500376)
+layers = 524288
+size = Vector3(0.5, 0.196, 0.161)
+
+[node name="PlayerHeadLamp" type="OmniLight3D" parent="."]
+transform = Transform3D(0.860206, -0.143872, -0.48923, 0.164962, 0.9863, -1.44365e-10, 0.482528, -0.0807042, 0.872155, -2.41452, 0.0107005, -1.37541)
+light_color = Color(0.203922, 0.329412, 1, 1)
+light_energy = 1.982
+
+[node name="TextureRect" type="TextureRect" parent="."]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -20.0
+offset_right = 20.0
+offset_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("3_t2crr")
+expand_mode = 1

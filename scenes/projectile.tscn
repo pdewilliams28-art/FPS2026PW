@@ -1,0 +1,14 @@
+[gd_scene load_steps=4 format=3 uid="uid://d3m5lf5f1dovn"]
+
+[ext_resource type="Script" path="res://scenes/projectile.gd" id="1_7takh"]
+[ext_resource type="PackedScene" uid="uid://cxr5jq60ml0cu" path="res://scenes/projectile_model (inherited).tscn" id="1_t55wm"]
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_ayo3o"]
+
+[node name="Projectile" type="Area3D"]
+script = ExtResource("1_7takh")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("SphereShape3D_ayo3o")
+
+[node name="projectile_model" parent="." instance=ExtResource("1_t55wm")]

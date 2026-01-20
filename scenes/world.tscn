@@ -1,14 +1,14 @@
 [gd_scene load_steps=10 format=3 uid="uid://dgn5q6l5ovybg"]
 
-[ext_resource type="PackedScene" uid="uid://c8ctix13pyd10" path="res://player.tscn" id="1_byb4o"]
-[ext_resource type="Texture2D" uid="uid://cje4ii0sumnju" path="res://checkboard.png" id="1_s6s0m"]
+[ext_resource type="Texture2D" uid="uid://cje4ii0sumnju" path="res://assets/checkboard.png" id="1_4bcus"]
+[ext_resource type="PackedScene" uid="uid://c8ctix13pyd10" path="res://scenes/player.tscn" id="2_nnncc"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_oqrd8"]
 albedo_color = Color(0.831373, 0.647059, 0.0862745, 1)
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_eu7ei"]
 albedo_color = Color(0.384314, 1, 0.360784, 1)
-albedo_texture = ExtResource("1_s6s0m")
+albedo_texture = ExtResource("1_4bcus")
 uv1_triplanar = true
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_7arjg"]
@@ -54,8 +54,8 @@ use_collision = true
 size = Vector3(54.0223, 26.5752, 16.4362)
 material = SubResource("StandardMaterial3D_3opwb")
 
-[node name="Player" parent="." instance=ExtResource("1_byb4o")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -22.079, 20.73, 68.012)
+[node name="Player" parent="." instance=ExtResource("2_nnncc")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -22.2146, 31.3668, 68.0467)
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
 transform = Transform3D(-0.966525, -0.236548, -0.0993724, -0.18609, 0.379657, 0.906218, -0.176636, 0.894375, -0.410967, 24.7651, 69.6946, 79.8706)

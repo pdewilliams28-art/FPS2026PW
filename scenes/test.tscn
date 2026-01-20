@@ -1,16 +1,16 @@
 [gd_scene load_steps=6 format=3 uid="uid://dm5uxyh7scqvg"]
 
-[ext_resource type="Texture2D" uid="uid://cje4ii0sumnju" path="res://checkboard.png" id="1_6jwtl"]
-[ext_resource type="Texture2D" uid="uid://ia8pudvhp36n" path="res://icon.svg" id="2_j4stg"]
+[ext_resource type="Texture2D" uid="uid://cje4ii0sumnju" path="res://assets/checkboard.png" id="1_jt6uv"]
+[ext_resource type="Texture2D" uid="uid://ia8pudvhp36n" path="res://icon.svg" id="2_ui5y1"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_tu8c6"]
-albedo_texture = ExtResource("1_6jwtl")
+albedo_texture = ExtResource("1_jt6uv")
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_0hcoh"]
-albedo_texture = ExtResource("2_j4stg")
+albedo_texture = ExtResource("2_ui5y1")
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_0k2ax"]
-albedo_texture = ExtResource("2_j4stg")
+albedo_texture = ExtResource("2_ui5y1")
 uv1_triplanar = true
 
 [node name="test" type="Node3D"]
