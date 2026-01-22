@@ -6,6 +6,7 @@
 [sub_resource type="SphereShape3D" id="SphereShape3D_ayo3o"]
 
 [node name="Projectile" type="Area3D"]
+top_level = true
 script = ExtResource("1_7takh")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]

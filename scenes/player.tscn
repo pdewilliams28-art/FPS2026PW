@@ -1,11 +1,26 @@
-[gd_scene load_steps=7 format=3 uid="uid://c8ctix13pyd10"]
+[gd_scene load_steps=9 format=3 uid="uid://c8ctix13pyd10"]
 
 [ext_resource type="Script" path="res://player.gd" id="1_anuh1"]
 [ext_resource type="PackedScene" uid="uid://drplhagqeyas7" path="res://assets/gun_model.glb" id="2_hbgvo"]
-[ext_resource type="PackedScene" uid="uid://d3m5lf5f1dovn" path="res://scenes/projectile.tscn" id="3_onqur"]
 [ext_resource type="Texture2D" uid="uid://dune6upbl356u" path="res://assets/reticle.png" id="3_t2crr"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_2ei63"]
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_2v3sh"]
+angle_min = 20.0
+angle_max = 89.5
+direction = Vector3(0, 0, 1)
+initial_velocity_min = 1.0
+initial_velocity_max = 6.0
+gravity = Vector3(0, 0, 0)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_3x632"]
+albedo_color = Color(0.556863, 0.27451, 0.843137, 1)
+
+[sub_resource type="SphereMesh" id="SphereMesh_lub4o"]
+material = SubResource("StandardMaterial3D_3x632")
+radius = 0.1
+height = 0.1
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_o74pq"]
 
@@ -28,12 +43,16 @@ transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -0.079
 transform = Transform3D(0.0193247, 0, 0.499626, 0, 0.5, 0, -0.499626, 0, 0.0193247, 0.569837, 0.0880649, -0.53206)
 
 [node name="ProjectileSpawnPoint" type="Marker3D" parent="Camera3D/WeaponPlace/gun_model"]
+unique_name_in_owner = true
 
-[node name="Projectile" parent="Camera3D/WeaponPlace/gun_model/ProjectileSpawnPoint" instance=ExtResource("3_onqur")]
-transform = Transform3D(-0.995999, 0, 0.0893636, 0, 1, 0, -0.0893636, 0, -0.995999, 0.0571815, 0, 1.47839)
+[node name="GPUParticles3D" type="GPUParticles3D" parent="Camera3D/WeaponPlace/gun_model/ProjectileSpawnPoint"]
+process_material = SubResource("ParticleProcessMaterial_2v3sh")
+draw_pass_1 = SubResource("SphereMesh_lub4o")
 
 [node name="MuzzleLight" type="OmniLight3D" parent="Camera3D/WeaponPlace/gun_model"]
+unique_name_in_owner = true
 transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, -0.727972, 0)
+visible = false
 light_color = Color(1, 1, 0.227451, 1)
 
 [node name="Body" type="CSGBox3D" parent="."]
@@ -66,3 +85,7 @@ grow_horizontal = 2
 grow_vertical = 2
 texture = ExtResource("3_t2crr")
 expand_mode = 1
+
+[node name="BulletTimer" type="Timer" parent="."]
+wait_time = 0.2
+one_shot = true
