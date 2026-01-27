@@ -1,26 +1,124 @@
-[gd_scene load_steps=9 format=3 uid="uid://c8ctix13pyd10"]
+[gd_scene load_steps=32 format=3 uid="uid://c8ctix13pyd10"]
 
 [ext_resource type="Script" path="res://player.gd" id="1_anuh1"]
 [ext_resource type="PackedScene" uid="uid://drplhagqeyas7" path="res://assets/gun_model.glb" id="2_hbgvo"]
 [ext_resource type="Texture2D" uid="uid://dune6upbl356u" path="res://assets/reticle.png" id="3_t2crr"]
+[ext_resource type="Texture2D" uid="uid://mpve3yqwy3lq" path="res://brackeys_vfx_bundle/particles/opague/circle_02.png" id="3_u8jtk"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_2ei63"]
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_u1wys"]
+
+[sub_resource type="SphereMesh" id="SphereMesh_1ingm"]
+
+[sub_resource type="Gradient" id="Gradient_0vhl2"]
+offsets = PackedFloat32Array(0, 0.66309, 1)
+colors = PackedColorArray(0, 0, 0, 1, 0.66309, 0.66309, 0.66309, 1, 1, 1, 1, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_u78t6"]
+gradient = SubResource("Gradient_0vhl2")
+
+[sub_resource type="Curve" id="Curve_uhl22"]
+_data = [Vector2(0.131579, 0.265813), 0.0, 0.0, 0, 0, Vector2(0.98583, 1), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_4ijh0"]
+curve = SubResource("Curve_uhl22")
 
 [sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_2v3sh"]
 angle_min = 20.0
 angle_max = 89.5
-direction = Vector3(0, 0, 1)
+direction = Vector3(1, 1, 1)
+spread = 180.0
 initial_velocity_min = 1.0
 initial_velocity_max = 6.0
 gravity = Vector3(0, 0, 0)
+scale_curve = SubResource("CurveTexture_4ijh0")
+color_initial_ramp = SubResource("GradientTexture1D_u78t6")
+hue_variation_min = -1.0
+hue_variation_max = 1.0
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_3x632"]
-albedo_color = Color(0.556863, 0.27451, 0.843137, 1)
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_xokaf"]
+vertex_color_use_as_albedo = true
+albedo_color = Color(0.396078, 1, 0.521569, 1)
 
-[sub_resource type="SphereMesh" id="SphereMesh_lub4o"]
-material = SubResource("StandardMaterial3D_3x632")
+[sub_resource type="SphereMesh" id="SphereMesh_1ukqb"]
+material = SubResource("StandardMaterial3D_xokaf")
+radius = 0.3
+height = 0.3
+
+[sub_resource type="Curve" id="Curve_wnt15"]
+_data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(0.346154, 0.735693), 0.0, 0.0, 0, 0, Vector2(0.993927, 0), 0.0, 0.0, 0, 0]
+point_count = 3
+
+[sub_resource type="CurveTexture" id="CurveTexture_qcfn8"]
+curve = SubResource("Curve_wnt15")
+
+[sub_resource type="Gradient" id="Gradient_1f7gp"]
+offsets = PackedFloat32Array(0, 0.165236, 0.349785, 0.493562, 0.736051, 1)
+colors = PackedColorArray(0, 0, 0, 1, 0.788235, 0.419608, 0.0705882, 1, 0.717647, 0.227451, 0.227451, 1, 0.721569, 0, 0.25098, 1, 0.776471, 0.392157, 0.8, 1, 1, 1, 1, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_axqmi"]
+gradient = SubResource("Gradient_1f7gp")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_py5hi"]
+direction = Vector3(0, 0, 1)
+spread = 55.172
+initial_velocity_min = 1.6
+initial_velocity_max = 4.0
+gravity = Vector3(0, 0, 0)
+color_ramp = SubResource("GradientTexture1D_axqmi")
+alpha_curve = SubResource("CurveTexture_qcfn8")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_d8jag"]
+transparency = 1
+vertex_color_use_as_albedo = true
+albedo_color = Color(0.976471, 0.996078, 0.984314, 1)
+
+[sub_resource type="SphereMesh" id="SphereMesh_0xwgk"]
+material = SubResource("StandardMaterial3D_d8jag")
 radius = 0.1
-height = 0.1
+height = 0.2
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_1boas"]
+transparency = 1
+blend_mode = 1
+shading_mode = 0
+vertex_color_use_as_albedo = true
+albedo_texture = ExtResource("3_u8jtk")
+billboard_mode = 1
+billboard_keep_scale = true
+
+[sub_resource type="Curve" id="Curve_neg3e"]
+_data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(0.275304, 0.0993977), 0.0, 0.0, 0, 0, Vector2(0.647773, 0.402862), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 4
+
+[sub_resource type="CurveTexture" id="CurveTexture_lr4oi"]
+curve = SubResource("Curve_neg3e")
+
+[sub_resource type="Gradient" id="Gradient_bcfws"]
+offsets = PackedFloat32Array(0, 0.435622, 1)
+colors = PackedColorArray(0, 0, 0, 1, 0.415686, 0.415686, 0.847059, 1, 1, 1, 1, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_2hu03"]
+gradient = SubResource("Gradient_bcfws")
+
+[sub_resource type="Curve" id="Curve_0mr2j"]
+_data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(0.251012, 0.691642), 0.0, 0.0, 0, 0, Vector2(0.645749, 0.412651), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 4
+
+[sub_resource type="CurveTexture" id="CurveTexture_iruog"]
+curve = SubResource("Curve_0mr2j")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_eu6we"]
+emission_shape_offset = Vector3(0, 0, 1)
+direction = Vector3(0, 0, 1)
+gravity = Vector3(0, 0, 0)
+scale_curve = SubResource("CurveTexture_iruog")
+color_ramp = SubResource("GradientTexture1D_2hu03")
+alpha_curve = SubResource("CurveTexture_lr4oi")
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_ygyxy"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_o74pq"]
 
@@ -45,9 +143,28 @@ transform = Transform3D(0.0193247, 0, 0.499626, 0, 0.5, 0, -0.499626, 0, 0.01932
 [node name="ProjectileSpawnPoint" type="Marker3D" parent="Camera3D/WeaponPlace/gun_model"]
 unique_name_in_owner = true
 
+[node name="GPUParticles3D3" type="GPUParticles3D" parent="Camera3D/WeaponPlace/gun_model/ProjectileSpawnPoint"]
+emitting = false
+process_material = SubResource("ParticleProcessMaterial_u1wys")
+draw_pass_1 = SubResource("SphereMesh_1ingm")
+
 [node name="GPUParticles3D" type="GPUParticles3D" parent="Camera3D/WeaponPlace/gun_model/ProjectileSpawnPoint"]
+emitting = false
+explosiveness = 1.0
+randomness = 1.0
 process_material = SubResource("ParticleProcessMaterial_2v3sh")
-draw_pass_1 = SubResource("SphereMesh_lub4o")
+draw_pass_1 = SubResource("SphereMesh_1ukqb")
+
+[node name="GPUParticles3D2" type="GPUParticles3D" parent="Camera3D/WeaponPlace/gun_model/ProjectileSpawnPoint"]
+process_material = SubResource("ParticleProcessMaterial_py5hi")
+draw_pass_1 = SubResource("SphereMesh_0xwgk")
+
+[node name="2DTextureParticles" type="GPUParticles3D" parent="Camera3D/WeaponPlace/gun_model/ProjectileSpawnPoint"]
+material_override = SubResource("StandardMaterial3D_1boas")
+lifetime = 5.0
+transform_align = 2
+process_material = SubResource("ParticleProcessMaterial_eu6we")
+draw_pass_1 = SubResource("PlaneMesh_ygyxy")
 
 [node name="MuzzleLight" type="OmniLight3D" parent="Camera3D/WeaponPlace/gun_model"]
 unique_name_in_owner = true

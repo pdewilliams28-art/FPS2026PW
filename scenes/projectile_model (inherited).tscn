@@ -6,8 +6,8 @@
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_8uaso"]
 render_priority = 0
 shader = ExtResource("2_ov1kk")
-shader_parameter/tail_color = Color(0.113725, 0, 0.160784, 1)
-shader_parameter/head_color = Color(0.631373, 0.0862745, 0, 1)
+shader_parameter/tail_color = Color(0.113725, 0.498039, 0.160784, 1)
+shader_parameter/head_color = Color(0.141176, 0.701961, 0.686275, 1)
 
 [node name="projectile_model" instance=ExtResource("1_tayn4")]
 transform = Transform3D(-4.37114e-08, 1, 0, 4.37114e-08, 1.91069e-15, -1, -1, -4.37114e-08, -4.37114e-08, 0, 0, 0)
