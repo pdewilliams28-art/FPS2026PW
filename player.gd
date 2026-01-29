@@ -9,6 +9,8 @@ var jumps = 1
 
 @export var muzzle_flash_time: float = 0.1
 
+@onready var animationPlayer = $AnimationPlayer
+
 
 func _ready() -> void:
 	#capture the mouse
@@ -74,6 +76,7 @@ func shoot_bullet():
 	#play sounds, turn on lights, particles?
 
 	$BulletTimer.start()
-	%MuzzleLight.visible = true
-	await get_tree() .create_timer(0.1).timeout
-	%MuzzleLight.visible = false
+	#%MuzzleLight.visible = true
+	#await get_tree() .create_timer(0.1).timeout
+	#%MuzzleLight.visible = false
+	animationPlayer.play("MuzzleFlash")

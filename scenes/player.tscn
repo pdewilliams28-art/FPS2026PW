@@ -1,15 +1,78 @@
-[gd_scene load_steps=32 format=3 uid="uid://c8ctix13pyd10"]
+[gd_scene load_steps=47 format=3 uid="uid://c8ctix13pyd10"]
 
 [ext_resource type="Script" path="res://player.gd" id="1_anuh1"]
 [ext_resource type="PackedScene" uid="uid://drplhagqeyas7" path="res://assets/gun_model.glb" id="2_hbgvo"]
+[ext_resource type="Texture2D" uid="uid://bfwigajidu1l7" path="res://brackeys_vfx_bundle/flipbooks/fire_01_8x8.tga" id="3_jak36"]
 [ext_resource type="Texture2D" uid="uid://dune6upbl356u" path="res://assets/reticle.png" id="3_t2crr"]
 [ext_resource type="Texture2D" uid="uid://mpve3yqwy3lq" path="res://brackeys_vfx_bundle/particles/opague/circle_02.png" id="3_u8jtk"]
+[ext_resource type="AudioStream" uid="uid://bfi1ey6tcjnrq" path="res://assets/gun_shoot.wav" id="6_bsrn0"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_2ei63"]
 
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_sy5g3"]
+transparency = 1
+blend_mode = 1
+shading_mode = 0
+vertex_color_use_as_albedo = true
+albedo_texture = ExtResource("3_jak36")
+billboard_mode = 3
+billboard_keep_scale = true
+particles_anim_h_frames = 8
+particles_anim_v_frames = 8
+particles_anim_loop = false
+
+[sub_resource type="Curve" id="Curve_uvc3w"]
+_data = [Vector2(0.0202429, 0), 0.0, 0.0, 0, 0, Vector2(0.5, 0.397967), 0.0, 0.0, 0, 0, Vector2(1, 1), 0.0, 0.0, 0, 0]
+point_count = 3
+
+[sub_resource type="CurveTexture" id="CurveTexture_eek3y"]
+curve = SubResource("Curve_uvc3w")
+
+[sub_resource type="Gradient" id="Gradient_lwofs"]
+offsets = PackedFloat32Array(0.0107296, 0.95279)
+colors = PackedColorArray(1, 1, 1, 1, 0.0431373, 0.854902, 0.666667, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_ht22n"]
+gradient = SubResource("Gradient_lwofs")
+
+[sub_resource type="Curve" id="Curve_0oqsa"]
+_data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(1, 1), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_ghqql"]
+curve = SubResource("Curve_0oqsa")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_mfpn6"]
+angle_min = -180.0
+angle_max = 180.0
+direction = Vector3(1, 1, 0)
+initial_velocity_min = 1.0
+initial_velocity_max = 2.0
+gravity = Vector3(0, 0, 0)
+scale_curve = SubResource("CurveTexture_ghqql")
+color_ramp = SubResource("GradientTexture1D_ht22n")
+alpha_curve = SubResource("CurveTexture_eek3y")
+anim_speed_min = 1.0
+anim_speed_max = 1.0
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_0r0ol"]
+size = Vector2(1, 1)
+orientation = 2
+
 [sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_u1wys"]
+direction = Vector3(0, 0, 1)
+spread = 9.828
+initial_velocity_min = 6.0
+initial_velocity_max = 15.0
+gravity = Vector3(0, 0, 0)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_73qkr"]
+albedo_color = Color(0.803753, 0.587879, 0.168141, 1)
 
 [sub_resource type="SphereMesh" id="SphereMesh_1ingm"]
+material = SubResource("StandardMaterial3D_73qkr")
+radius = 0.2
+height = 0.7
 
 [sub_resource type="Gradient" id="Gradient_0vhl2"]
 offsets = PackedFloat32Array(0, 0.66309, 1)
@@ -122,6 +185,187 @@ alpha_curve = SubResource("CurveTexture_lr4oi")
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_o74pq"]
 
+[sub_resource type="Animation" id="Animation_5ix67"]
+resource_name = "MuzzleFlash"
+length = 0.25
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = false
+tracks/0/path = NodePath("Camera3D/WeaponPlace/gun_model/ProjectileSpawnPoint/Explosion:emitting")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = false
+tracks/1/path = NodePath("Camera3D/WeaponPlace/gun_model/ProjectileSpawnPoint/Forward:emitting")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Camera3D/WeaponPlace/gun_model/MuzzleLight:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("AudioStreamPlayer:playing")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("Camera3D/WeaponPlace:rotation")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector3(0.261799, 0, 0), Vector3(0.1309, 0, 0), Vector3(0, 0, 0)]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("Camera3D/WeaponPlace/gun_model/ProjectileSpawnPoint/Cone:emitting")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("Camera3D/WeaponPlace/gun_model/ProjectileSpawnPoint/Fire:emitting")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+
+[sub_resource type="Animation" id="Animation_sfid5"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Camera3D/WeaponPlace/gun_model/ProjectileSpawnPoint/Explosion:emitting")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Camera3D/WeaponPlace/gun_model/ProjectileSpawnPoint/Forward:emitting")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Camera3D/WeaponPlace/gun_model/MuzzleLight:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("AudioStreamPlayer:playing")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("Camera3D/WeaponPlace:rotation")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0.261799, 0, 0)]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("Camera3D/WeaponPlace/gun_model/ProjectileSpawnPoint/Cone:emitting")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("Camera3D/WeaponPlace/gun_model/ProjectileSpawnPoint/Fire:emitting")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_adws3"]
+_data = {
+"MuzzleFlash": SubResource("Animation_5ix67"),
+"RESET": SubResource("Animation_sfid5")
+}
+
 [node name="Player" type="CharacterBody3D"]
 script = ExtResource("1_anuh1")
 
@@ -135,32 +379,43 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.37247, 0)
 cull_mask = 524287
 
 [node name="WeaponPlace" type="Node3D" parent="Camera3D"]
-transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -0.0795756, -0.16886, -0.358329)
+transform = Transform3D(1, 0, 0, 0, 0.965926, -0.258819, 0, 0.258819, 0.965926, 0.6, -0.3, -0.7)
 
 [node name="gun_model" parent="Camera3D/WeaponPlace" instance=ExtResource("2_hbgvo")]
-transform = Transform3D(0.0193247, 0, 0.499626, 0, 0.5, 0, -0.499626, 0, 0.0193247, 0.569837, 0.0880649, -0.53206)
+transform = Transform3D(-0.499626, 0, 0.0193247, 0, 0.5, 0, -0.0193247, 0, -0.499626, -1.43016, 0.0880649, -0.53206)
 
 [node name="ProjectileSpawnPoint" type="Marker3D" parent="Camera3D/WeaponPlace/gun_model"]
 unique_name_in_owner = true
 
-[node name="GPUParticles3D3" type="GPUParticles3D" parent="Camera3D/WeaponPlace/gun_model/ProjectileSpawnPoint"]
-emitting = false
+[node name="Fire" type="GPUParticles3D" parent="Camera3D/WeaponPlace/gun_model/ProjectileSpawnPoint"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0303763, 0, 0.785358)
+material_override = SubResource("StandardMaterial3D_sy5g3")
+one_shot = true
+transform_align = 1
+process_material = SubResource("ParticleProcessMaterial_mfpn6")
+draw_pass_1 = SubResource("PlaneMesh_0r0ol")
+
+[node name="Forward" type="GPUParticles3D" parent="Camera3D/WeaponPlace/gun_model/ProjectileSpawnPoint"]
+one_shot = true
 process_material = SubResource("ParticleProcessMaterial_u1wys")
 draw_pass_1 = SubResource("SphereMesh_1ingm")
 
-[node name="GPUParticles3D" type="GPUParticles3D" parent="Camera3D/WeaponPlace/gun_model/ProjectileSpawnPoint"]
+[node name="Explosion" type="GPUParticles3D" parent="Camera3D/WeaponPlace/gun_model/ProjectileSpawnPoint"]
 emitting = false
+one_shot = true
 explosiveness = 1.0
 randomness = 1.0
 process_material = SubResource("ParticleProcessMaterial_2v3sh")
 draw_pass_1 = SubResource("SphereMesh_1ukqb")
 
-[node name="GPUParticles3D2" type="GPUParticles3D" parent="Camera3D/WeaponPlace/gun_model/ProjectileSpawnPoint"]
+[node name="Cone" type="GPUParticles3D" parent="Camera3D/WeaponPlace/gun_model/ProjectileSpawnPoint"]
+one_shot = true
 process_material = SubResource("ParticleProcessMaterial_py5hi")
 draw_pass_1 = SubResource("SphereMesh_0xwgk")
 
 [node name="2DTextureParticles" type="GPUParticles3D" parent="Camera3D/WeaponPlace/gun_model/ProjectileSpawnPoint"]
 material_override = SubResource("StandardMaterial3D_1boas")
+emitting = false
 lifetime = 5.0
 transform_align = 2
 process_material = SubResource("ParticleProcessMaterial_eu6we")
@@ -169,7 +424,6 @@ draw_pass_1 = SubResource("PlaneMesh_ygyxy")
 [node name="MuzzleLight" type="OmniLight3D" parent="Camera3D/WeaponPlace/gun_model"]
 unique_name_in_owner = true
 transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, -0.727972, 0)
-visible = false
 light_color = Color(1, 1, 0.227451, 1)
 
 [node name="Body" type="CSGBox3D" parent="."]
@@ -206,3 +460,11 @@ expand_mode = 1
 [node name="BulletTimer" type="Timer" parent="."]
 wait_time = 0.2
 one_shot = true
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_adws3")
+}
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("6_bsrn0")
