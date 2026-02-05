@@ -79,4 +79,6 @@ func shoot_bullet():
 	#%MuzzleLight.visible = true
 	#await get_tree() .create_timer(0.1).timeout
 	#%MuzzleLight.visible = false
+	$"Camera3D/WeaponPlace/gun_model/ProjectileSpawnPoint/2DTextureParticles".restart()
+	
 	animationPlayer.play("MuzzleFlash")
