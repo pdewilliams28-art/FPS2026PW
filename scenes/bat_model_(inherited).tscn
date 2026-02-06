@@ -3,9 +3,9 @@
 [ext_resource type="PackedScene" uid="uid://ddrd1ynirxjxm" path="res://assets/bat_model.glb" id="1_8l1ep"]
 [ext_resource type="Script" uid="uid://0jjyw0v7rnki" path="res://scenes/bat_model_(inherited).gd" id="2_ogvbp"]
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_35nqd"]
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_nrm75"]
 transparency = 1
-albedo_color = Color(0.10980392, 1, 1, 0.03137255)
+albedo_color = Color(0, 0, 1, 0)
 
 [sub_resource type="Animation" id="Animation_li5ay"]
 resource_name = "Idle"
@@ -120,14 +120,14 @@ tracks/0/keys = {
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("Armature/Skeleton3D/bat:material_overlay")
+tracks/1/path = NodePath("Armature/Skeleton3D/bat:material_overlay:albedo_color")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [SubResource("StandardMaterial3D_35nqd")]
+"update": 0,
+"values": [Color(0, 0, 1, 0)]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_yaocr"]
@@ -153,26 +153,14 @@ tracks/0/keys = {
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("Armature/Skeleton3D/bat:material_overlay")
+tracks/1/path = NodePath("Armature/Skeleton3D/bat:material_overlay:albedo_color")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
-"times": PackedFloat32Array(0, 0.1, 0.2),
-"transitions": PackedFloat32Array(1, 1, 1),
-"update": 1,
-"values": [SubResource("StandardMaterial3D_35nqd"), SubResource("StandardMaterial3D_35nqd"), SubResource("StandardMaterial3D_35nqd")]
-}
-tracks/2/type = "value"
-tracks/2/imported = false
-tracks/2/enabled = false
-tracks/2/path = NodePath("Armature/Skeleton3D/bat:material_overlay")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/keys = {
-"times": PackedFloat32Array(0, 0.1, 0.2),
+"times": PackedFloat32Array(0, 0.100277394, 0.2),
 "transitions": PackedFloat32Array(1, 1, 1),
 "update": 0,
-"values": [SubResource("StandardMaterial3D_35nqd"), SubResource("StandardMaterial3D_35nqd"), SubResource("StandardMaterial3D_35nqd")]
+"values": [Color(0, 0, 1, 0), Color(0, 0, 1, 1), Color(0, 0, 1, 0)]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_yyisn"]
@@ -187,40 +175,41 @@ animation = &"custom/hurt"
 animation = &"Idle"
 
 [sub_resource type="AnimationNodeOneShot" id="AnimationNodeOneShot_1wkvy"]
+mix_mode = 1
 
 [sub_resource type="AnimationNodeBlendTree" id="AnimationNodeBlendTree_ik8ah"]
-graph_offset = Vector2(-476.08374, 68.14523)
+graph_offset = Vector2(-286.66666, -64.666664)
 nodes/output/position = Vector2(380, 160)
 nodes/Hurt/node = SubResource("AnimationNodeAnimation_k5k0n")
 nodes/Hurt/position = Vector2(-120, 260)
 nodes/Idle/node = SubResource("AnimationNodeAnimation_g44he")
-nodes/Idle/position = Vector2(-20, 80)
+nodes/Idle/position = Vector2(-120, 80)
 nodes/OneShot/node = SubResource("AnimationNodeOneShot_1wkvy")
-nodes/OneShot/position = Vector2(160, 160)
+nodes/OneShot/position = Vector2(133.33333, 106.666664)
 node_connections = [&"output", 0, &"OneShot", &"OneShot", 0, &"Idle", &"OneShot", 1, &"Hurt"]
 
 [node name="bat_model (Inherited)" unique_id=1142546773 instance=ExtResource("1_8l1ep")]
 script = ExtResource("2_ogvbp")
 
-[node name="Skeleton3D" parent="Armature" index="0"]
-bones/0/position = Vector3(0, 0.0236, 0)
-bones/1/rotation = Quaternion(0.18618786, -0.007994756, -0.63716954, 0.74785376)
-bones/2/rotation = Quaternion(0.17784256, 0.07830874, 0.39519513, 0.89780873)
-bones/3/rotation = Quaternion(0.13769542, 0.10477269, 0.36206192, 0.9159551)
-bones/4/rotation = Quaternion(0.18618786, 0.007994756, 0.63716954, 0.74785376)
-bones/5/rotation = Quaternion(0.17784256, -0.07830874, -0.39519513, 0.89780873)
-bones/6/rotation = Quaternion(0.13769542, -0.10477269, -0.36206192, 0.9159551)
+[node name="Skeleton3D" parent="Armature" parent_id_path=PackedInt32Array(1468637672) index="0" unique_id=697295212]
+bones/0/position = Vector3(0, 0.013666237, 0)
+bones/1/rotation = Quaternion(0.21214323, -0.017125195, -0.5931295, 0.776466)
+bones/2/rotation = Quaternion(0.09768581, 0.044781704, 0.41387483, 0.9039689)
+bones/3/rotation = Quaternion(-0.01591287, 0.043978143, 0.33798134, 0.9399901)
+bones/4/rotation = Quaternion(0.21214323, 0.017125195, 0.5931295, 0.776466)
+bones/5/rotation = Quaternion(0.09768581, -0.044781704, -0.41387483, 0.9039689)
+bones/6/rotation = Quaternion(-0.01591287, -0.043978143, -0.33798134, 0.9399901)
 bones/7/position = Vector3(0.130992, -0.227392, -0.087851495)
 bones/7/rotation = Quaternion(0.26196814, 0.08345515, 0.26575115, 0.92400455)
-bones/8/rotation = Quaternion(3.958214e-08, 0.6536248, 0.7568189, 2.4820844e-08)
+bones/8/rotation = Quaternion(3.2666584e-08, 0.5748638, 0.81824917, 1.9158458e-08)
 bones/10/position = Vector3(-0.130992, -0.227392, -0.087851495)
 bones/10/rotation = Quaternion(0.26196814, -0.08345515, -0.26575115, 0.92400455)
-bones/11/rotation = Quaternion(2.4498098e-08, 0.6536248, 0.75681883, 3.432442e-08)
+bones/11/rotation = Quaternion(2.6113636e-08, 0.57486385, 0.8182491, 4.7555964e-08)
 
-[node name="bat" parent="Armature/Skeleton3D" index="0"]
-material_overlay = SubResource("StandardMaterial3D_35nqd")
+[node name="bat" parent="Armature/Skeleton3D" index="0" unique_id=1365055740]
+material_overlay = SubResource("StandardMaterial3D_nrm75")
 
-[node name="AnimationPlayer" parent="." index="1"]
+[node name="AnimationPlayer" parent="." index="1" unique_id=1521463545]
 libraries/ = SubResource("AnimationLibrary_yaocr")
 libraries/custom = SubResource("AnimationLibrary_yyisn")
 autoplay = &"Idle"
